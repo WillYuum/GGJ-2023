@@ -45,4 +45,11 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
             GameUI.instance.SwitchState(GameState.LoseScreen);
         });
     }
+
+
+        public void StartGameLoop()
+    {
+        
+        AudioManager.instance.PlayBGM("Strings");
+    }
 }
