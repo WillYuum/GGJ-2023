@@ -90,7 +90,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sfxConfigs: []
-  _bgmConfigs: []
+  _bgmConfigs:
+  - Name: Strings
+    Clip: {fileID: 8300000, guid: abb678cd9a5ea43b08e9e995af3572a5, type: 3}
+    Volume: 1
+    Loop: 1
+    PitchProps:
+      RandPitch: 0
+      Min: 0
+      Max: 0
+  - Name: Drums
+    Clip: {fileID: 8300000, guid: 26df31b46e55f4e5ea4692dbe8933739, type: 3}
+    Volume: 1
+    Loop: 1
+    PitchProps:
+      RandPitch: 0
+      Min: 0
+      Max: 0
+  - Name: WindsAndStrings
+    Clip: {fileID: 8300000, guid: 1ef3527fee9eb4f9fa04af1d582e7c01, type: 3}
+    Volume: 1
+    Loop: 1
+    PitchProps:
+      RandPitch: 0
+      Min: 0
+      Max: 0
 --- !u!1 &2421195833457379878
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8578cdfcd7aca34b934de2d7460b82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transitionPoints:
+    <mainMenuYPos>k__BackingField: 0
+    <mainGameYPos>k__BackingField: 0
+    <loseScreenYPos>k__BackingField: 0
 --- !u!114 &4533607928495642721
 MonoBehaviour:
   m_ObjectHideFlags: 0
