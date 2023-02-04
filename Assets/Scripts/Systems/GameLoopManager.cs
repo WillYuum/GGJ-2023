@@ -21,6 +21,9 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
         enabled = true;
         LoopIsActive = true;
 
+        AudioManager.instance.PlayBGM("Strings");
+
+
         if (OnGameLoopStart != null)
         {
             OnGameLoopStart();
@@ -47,9 +50,9 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
     }
 
 
-        public void StartGameLoop()
+    public void StartGameLoop()
     {
-        
+
         AudioManager.instance.PlayBGM("Strings");
     }
 }

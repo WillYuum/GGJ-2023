@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     private void Start()
     {
+        AudioManager.instance.Load();
         SwitchToGameState(GameState.MainMenu, null, false);
     }
 
