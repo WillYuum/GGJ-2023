@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void StartGame()
     {
+        GameLoopManager.instance.InvokeStartGameLoop();
         SwitchToGameState(GameState.MainGame, () =>
         {
             //Open MainGameUI  
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void SwitchToGameState(GameState gameState, Action cb, bool tween = true)
+    public void SwitchToGameState(GameState gameState, Action cb, bool tween = true)
     {
         Vector3 cameraPosition = Camera.main.transform.position;
         switch (gameState)

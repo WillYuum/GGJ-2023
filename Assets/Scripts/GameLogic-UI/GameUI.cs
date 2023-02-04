@@ -8,7 +8,7 @@ public class GameUI : MonoBehaviourSingleton<GameUI>
 
     [SerializeField] private MainMenu _mainMenu;
     [SerializeField] private GameScreen _gameScreen;
-    // [SerializeField] private LoseScreen _loseScreen;
+    [SerializeField] private LoseScreen _loseScreen;
 
     public void SwitchState(GameState gameState)
     {
@@ -23,17 +23,17 @@ public class GameUI : MonoBehaviourSingleton<GameUI>
             case GameState.MainMenu:
                 _mainMenu.gameObject.SetActive(true);
                 _gameScreen.gameObject.SetActive(false);
-                // _loseScreen.gameObject.SetActive(false);
+                _loseScreen.gameObject.SetActive(false);
                 break;
             case GameState.MainGame:
                 _mainMenu.gameObject.SetActive(false);
                 _gameScreen.gameObject.SetActive(true);
-                // _loseScreen.gameObject.SetActive(false);
+                _loseScreen.gameObject.SetActive(false);
                 break;
             case GameState.LoseScreen:
                 _mainMenu.gameObject.SetActive(false);
                 _gameScreen.gameObject.SetActive(false);
-                // _loseScreen.gameObject.SetActive(true);
+                _loseScreen.gameObject.SetActive(true);
                 break;
         }
     }
