@@ -22,9 +22,42 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
         LoopIsActive = false;
     }
 
+
+    [HideInInspector] public GameObject HoveredRoot;
+    [SerializeField] private Sprite _rootOffSprite;
+    [SerializeField] private Sprite _rootOnSprite;
     void Update()
     {
         AudioManager.instance.setBGMMode(ClosestEnemyPositionY);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (HoveredRoot != null)
+            {
+                SwitchRootState();
+            }
+        }
+    }
+
+
+    private void SwitchRootState()
+    {
+        Root root = HoveredRoot.GetComponent<Root>();
+        bool shouldActivate = root.IsActive ? false : true;
+
+        if (shouldActivate)
+        {
+            if (CurrentRootResource <= 0) return;
+
+            CurrentRootResource--;
+            root.SwitchToActive();
+        }
+        else
+        {
+            CurrentRootResource++;
+            root.SwitchToInactive();
+        }
+
     }
 
 

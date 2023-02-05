@@ -7,16 +7,21 @@ public class MouseOverObjectDetector : MonoBehaviour
 
     private void Awake()
     {
-        gameObject.AddComponent<CircleCollider2D>();
+        var circlCollider = gameObject.AddComponent<CircleCollider2D>();
+        circlCollider.radius = 0.45f;
     }
 
     private void OnMouseOver()
     {
-        print("Mouse is over " + gameObject.name);
+        // print("Mouse is over " + gameObject.name);
+        GameLoopManager.instance.HoveredRoot = gameObject;
+        gameObject.GetComponent<SimpleFlash>().EnableFlash();
     }
 
     private void OnMouseExit()
     {
-        print("Mouse is no longer on " + gameObject.name);
+        // print("Mouse is no longer on " + gameObject.name);
+        GameLoopManager.instance.HoveredRoot = null;
+        gameObject.GetComponent<SimpleFlash>().DisableFlash();
     }
 }

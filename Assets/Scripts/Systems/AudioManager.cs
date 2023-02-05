@@ -102,9 +102,9 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
             Invoke(nameof(StoppedTweening), _bgmFadeDuration);
         }
 
-        print(closestEnemyPosition < threatBase + threatIncrement);
-        print(closestEnemyPosition < threatBase + 2 * threatIncrement);
-        print("---");
+        // print(closestEnemyPosition < threatBase + threatIncrement);
+        // print(closestEnemyPosition < threatBase + 2 * threatIncrement);
+        // print("---");
 
     }
 
