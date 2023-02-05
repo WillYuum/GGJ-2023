@@ -2,6 +2,7 @@
 using UnityEngine;
 using Utils.GenericSingletons;
 using AudioClasses;
+using DG.Tweening;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
@@ -59,35 +60,57 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         _bgm.ForEach(audio => audio.Stop());
     }
 
+
+    private bool _isTweening = false;
+    [SerializeField] private float _bgmFadeDuration = 1.0f;
     public void setBGMMode(float closestEnemyPosition)
     {
+        if (_isTweening) return;
+
         Vector2 endpoints = new Vector2(0.17f, -1.68f);
         float threatIncrement = Mathf.Abs(endpoints.x - endpoints.y) / 3.0f;
         float threatBase = Mathf.Min(endpoints.x, endpoints.y);
-        
+
         Audio audioLow = _bgm.Find(x => x.Name == "Drums");
         Audio audioMid = _bgm.Find(x => x.Name == "Strings");
         Audio audioHigh = _bgm.Find(x => x.Name == "WindsAndStrings");
-    
+
         if (closestEnemyPosition < threatBase + threatIncrement)
         {
-            audioLow.SetVolume(0.9f);
-            audioMid.SetVolume(0.9f);
-            audioHigh.SetVolume(0.9f);
-        } else if (closestEnemyPosition < threatBase + 2 * threatIncrement) {
-            audioLow.SetVolume(0.9f);
-            audioMid.SetVolume(0.9f);
-            audioHigh.SetVolume(0.0f);
-        } else {
-            audioLow.SetVolume(0.9f);
-            audioMid.SetVolume(0.0f);
-            audioHigh.SetVolume(0.0f);
+            audioLow.SetVolume(0.9f, _bgmFadeDuration);
+            audioMid.SetVolume(0.9f, _bgmFadeDuration);
+            audioHigh.SetVolume(0.9f, _bgmFadeDuration);
+            _isTweening = true;
+        }
+        else if (closestEnemyPosition < threatBase + 2 * threatIncrement)
+        {
+            audioLow.SetVolume(0.9f, _bgmFadeDuration);
+            audioMid.SetVolume(0.9f, _bgmFadeDuration);
+            audioHigh.SetVolume(0.0f, _bgmFadeDuration);
+            _isTweening = true;
+        }
+        else
+        {
+            audioLow.SetVolume(0.9f, _bgmFadeDuration);
+            audioMid.SetVolume(0.0f, _bgmFadeDuration);
+            audioHigh.SetVolume(0.0f, _bgmFadeDuration);
+            _isTweening = true;
+        }
+
+        if (_isTweening)
+        {
+            Invoke(nameof(StoppedTweening), _bgmFadeDuration);
         }
 
         print(closestEnemyPosition < threatBase + threatIncrement);
         print(closestEnemyPosition < threatBase + 2 * threatIncrement);
         print("---");
 
+    }
+
+    private void StoppedTweening()
+    {
+        _isTweening = false;
     }
 
 
@@ -155,9 +178,16 @@ namespace AudioClasses
             _pitchProps = audioConfig.PitchProps;
         }
 
-        public void SetVolume(float volume)
+        public void SetVolume(float volume, float duration, bool instant = false)
         {
-            _source.volume = volume;
+            if (instant)
+            {
+                _source.volume = volume;
+            }
+            else
+            {
+                _source.DOFade(volume, 0.5f);
+            }
         }
 
         public void Play()

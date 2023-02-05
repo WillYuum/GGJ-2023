@@ -18,14 +18,11 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
         LoopIsActive = false;
     }
 
-
-    private void Update()
+    void Update()
     {
-        // var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        // var res = Physics2D.Raycast(ray.origin, ray.direction, 100f);
-        // print(res.collider?.name);
-        // if()
+        AudioManager.instance.setBGMMode(ClosestEnemyPositionY);
     }
+
 
     public void InvokeStartGameLoop()
     {
@@ -62,7 +59,4 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
         });
     }
 
-    void Update() {
-        AudioManager.instance.setBGMMode(ClosestEnemyPositionY);
-    }
 }
