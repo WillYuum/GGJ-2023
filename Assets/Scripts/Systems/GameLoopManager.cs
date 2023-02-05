@@ -42,6 +42,8 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
 
     public void PlayerTakeDamage()
     {
+        AudioManager.instance.PlaySFX("tree_damaged");
+
         CurrentHP--;
         GameUI.instance.UpdateHP(CurrentHP);
 
