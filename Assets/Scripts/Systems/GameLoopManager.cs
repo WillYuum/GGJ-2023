@@ -16,6 +16,14 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
     }
 
 
+    private void Update()
+    {
+        // var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // var res = Physics2D.Raycast(ray.origin, ray.direction, 100f);
+        // print(res.collider?.name);
+        // if()
+    }
+
     public void InvokeStartGameLoop()
     {
         enabled = true;
@@ -49,10 +57,4 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
         });
     }
 
-
-    public void StartGameLoop()
-    {
-
-        AudioManager.instance.PlayBGM("Strings");
-    }
 }
