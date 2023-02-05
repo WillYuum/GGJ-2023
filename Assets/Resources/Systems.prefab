@@ -93,7 +93,7 @@ MonoBehaviour:
   _bgmConfigs:
   - Name: Strings
     Clip: {fileID: 8300000, guid: abb678cd9a5ea43b08e9e995af3572a5, type: 3}
-    Volume: 1
+    Volume: 0.8
     Loop: 1
     PitchProps:
       RandPitch: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
       Max: 0
   - Name: Drums
     Clip: {fileID: 8300000, guid: 26df31b46e55f4e5ea4692dbe8933739, type: 3}
-    Volume: 1
+    Volume: 0.8
     Loop: 1
     PitchProps:
       RandPitch: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
       Max: 0
   - Name: WindsAndStrings
     Clip: {fileID: 8300000, guid: 1ef3527fee9eb4f9fa04af1d582e7c01, type: 3}
-    Volume: 1
+    Volume: 0.8
     Loop: 1
     PitchProps:
       RandPitch: 0
@@ -274,3 +274,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662aea13c4c7f2a4785b939f32b4f760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClosestEnemyPositionY: -1

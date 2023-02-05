@@ -59,8 +59,36 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         _bgm.ForEach(audio => audio.Stop());
     }
 
+    public void setBGMMode(float closestEnemyPosition)
+    {
+        Vector2 endpoints = new Vector2(0.17f, -1.68f);
+        float threatIncrement = Mathf.Abs(endpoints.x - endpoints.y) / 3.0f;
+        float threatBase = Mathf.Min(endpoints.x, endpoints.y);
+        
+        Audio audioLow = _bgm.Find(x => x.Name == "Drums");
+        Audio audioMid = _bgm.Find(x => x.Name == "Strings");
+        Audio audioHigh = _bgm.Find(x => x.Name == "WindsAndStrings");
+    
+        if (closestEnemyPosition < threatBase + threatIncrement)
+        {
+            audioLow.SetVolume(0.9f);
+            audioMid.SetVolume(0.9f);
+            audioHigh.SetVolume(0.9f);
+        } else if (closestEnemyPosition < threatBase + 2 * threatIncrement) {
+            audioLow.SetVolume(0.9f);
+            audioMid.SetVolume(0.9f);
+            audioHigh.SetVolume(0.0f);
+        } else {
+            audioLow.SetVolume(0.9f);
+            audioMid.SetVolume(0.0f);
+            audioHigh.SetVolume(0.0f);
+        }
 
+        print(closestEnemyPosition < threatBase + threatIncrement);
+        print(closestEnemyPosition < threatBase + 2 * threatIncrement);
+        print("---");
 
+    }
 
 
     private void Play(string audioName, List<Audio> audios)
