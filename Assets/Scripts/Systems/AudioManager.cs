@@ -44,8 +44,14 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     public void PlayBGM(string name)
     {
-        StopAllBGM();
+        // StopAllBGM();
         Play(name, _bgm);
+    }
+
+    public void StopBGM(string name)
+    {
+        Audio audio = _bgm.Find(x => x.Name == name);
+        audio.Stop();
     }
 
     public void StopAllBGM()
