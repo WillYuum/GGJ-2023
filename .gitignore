@@ -60,3 +60,9 @@ crashlytics-build.properties
 
 
 *.dwlt
+
+# Aseprite
+_aseprite/*
+
+# Mac
+*.DS_Store
