@@ -89,7 +89,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554411df99a9a064e95265aa36dfe8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sfxConfigs: []
+  _sfxConfigs:
+  - Name: enemy_damaged
+    Clip: {fileID: 8300000, guid: 98c241ea5e5284c1db1ddf1a8b6a8f52, type: 3}
+    Volume: 1
+    Loop: 0
+    PitchProps:
+      RandPitch: 1
+      Min: 0.9
+      Max: 1.1
+  - Name: enemy_dies
+    Clip: {fileID: 8300000, guid: 55d5b116673dc4936b8c0616f8b4ea4d, type: 3}
+    Volume: 1
+    Loop: 0
+    PitchProps:
+      RandPitch: 1
+      Min: 0.9
+      Max: 1.1
+  - Name: tree_damaged
+    Clip: {fileID: 8300000, guid: 5679e8734f2134411bac1d1abf40a95a, type: 3}
+    Volume: 1
+    Loop: 0
+    PitchProps:
+      RandPitch: 1
+      Min: 0.9
+      Max: 1.1
+  - Name: spawn_enemy
+    Clip: {fileID: 8300000, guid: 55d1f8cdfc182494da3e8a15797943d4, type: 3}
+    Volume: 1
+    Loop: 0
+    PitchProps:
+      RandPitch: 1
+      Min: 0.9
+      Max: 1.1
   _bgmConfigs:
   - Name: Strings
     Clip: {fileID: 8300000, guid: abb678cd9a5ea43b08e9e995af3572a5, type: 3}
@@ -115,6 +147,7 @@ MonoBehaviour:
       RandPitch: 0
       Min: 0
       Max: 0
+  _bgmFadeDuration: 1
 --- !u!1 &2421195833457379878
 GameObject:
   m_ObjectHideFlags: 0
