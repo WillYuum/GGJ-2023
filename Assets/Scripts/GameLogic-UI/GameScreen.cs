@@ -10,9 +10,9 @@ public class GameScreen : MonoBehaviour
 
 
 
-    private void UpdateRootsIndicaotr(int roots)
+    public void UpdateRootsIndicaotr(int roots)
     {
-        _rootIndicator.text = roots.ToString() + " / " + GameVariables.instance.RootsResourceMax + " Roots";
+        _rootIndicator.text = roots + " Roots";
     }
 
 

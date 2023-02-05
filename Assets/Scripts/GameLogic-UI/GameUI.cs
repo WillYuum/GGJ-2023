@@ -52,4 +52,10 @@ public class GameUI : MonoBehaviourSingleton<GameUI>
         _hpIndicator.UpdateHealth(amount);
     }
 
+
+    public void UpdateRootResource(int amount)
+    {
+        _gameScreen.UpdateRootsIndicaotr(amount);
+    }
+
 }

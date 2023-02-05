@@ -26,9 +26,15 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
     [HideInInspector] public GameObject HoveredRoot;
     [SerializeField] private Sprite _rootOffSprite;
     [SerializeField] private Sprite _rootOnSprite;
+
+
+
     void Update()
     {
-        AudioManager.instance.setBGMMode(ClosestEnemyPositionY);
+
+        float mostTopEnemyYPosition = GetMostTopEnemyYPosition();
+        // print("mostTopEnemyYPosition: " + mostTopEnemyYPosition);
+        AudioManager.instance.setBGMMode(mostTopEnemyYPosition);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -37,6 +43,21 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
                 SwitchRootState();
             }
         }
+    }
+
+    private float GetMostTopEnemyYPosition()
+    {
+        float mostTopEnemyYPosition = -2.0f;
+
+        for (int i = 0; i < ManuelMovementScript.instance.moveableObjects.Length; i++)
+        {
+            if (ManuelMovementScript.instance.moveableObjects[i].transform.position.y > mostTopEnemyYPosition)
+            {
+                mostTopEnemyYPosition = ManuelMovementScript.instance.moveableObjects[i].transform.position.y;
+            }
+        }
+
+        return mostTopEnemyYPosition;
     }
 
 
@@ -71,6 +92,7 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
             root.SwitchToInactive();
         }
 
+        GameUI.instance.UpdateRootResource(CurrentRootResource);
     }
 
 

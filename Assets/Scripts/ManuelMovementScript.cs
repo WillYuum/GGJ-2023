@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Utils.GenericSingletons;
 
-public class ManuelMovementScript : MonoBehaviour
+public class ManuelMovementScript : MonoBehaviourSingleton<ManuelMovementScript>
 {
     [SerializeField] private Transform[] points;
-    [SerializeField] private GameObject[] moveableObjects;
+    [SerializeField] public GameObject[] moveableObjects;
 
     public void MoveObjectsOnPoints()
     {
@@ -33,7 +34,7 @@ public class ManuelMovementScript : MonoBehaviour
 
     private IEnumerator MoveObjectOnPoints(GameObject moveableObject)
     {
-        float durationToNextPOint = 0.55f;
+        float durationToNextPOint = 5.55f;
 
         //tween to the next value
         for (int i = 0; i < points.Length; i++)
