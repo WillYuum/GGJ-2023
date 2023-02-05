@@ -74,6 +74,7 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
     }
 
 
+    // [SerializeField] private ManuelMovementScript _manuelMovementScript;
     public void InvokeStartGameLoop()
     {
         enabled = true;
@@ -91,6 +92,13 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
         {
             OnGameLoopStart();
         }
+        Invoke(nameof(StartEnemyMoving), 4.0f);
+    }
+
+    private void StartEnemyMoving()
+    {
+        var manuelMovementScript = FindObjectOfType<ManuelMovementScript>();
+        manuelMovementScript.MoveObjectsOnPoints();
     }
 
     public void InvokeLoseGame()
@@ -105,6 +113,7 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
             OnLoseGame();
         }
 
+        GameUI.instance.DisableAllScreens();
         GameManager.instance.SwitchToGameState(GameState.LoseScreen, () =>
         {
             //Open LoseScreenUI

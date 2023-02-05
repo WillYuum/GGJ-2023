@@ -43,7 +43,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SwitchToGameState(GameState.MainMenu, () =>
+        {
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SwitchToGameState(GameState.MainMenu, null, false);
+        });
     }
 
     public void SwitchToGameState(GameState gameState, Action cb, bool tween = true)

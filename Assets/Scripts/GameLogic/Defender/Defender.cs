@@ -27,7 +27,7 @@ public class Defender : MonoBehaviour
 
 
         //Get all the objects that are within a radius of 2
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2f);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2.0f, LayerMask.GetMask("Enemy"));
         //Loop through all the objects
         foreach (Collider2D collider in colliders)
         {

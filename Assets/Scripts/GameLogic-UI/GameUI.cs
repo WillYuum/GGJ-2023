@@ -15,6 +15,13 @@ public class GameUI : MonoBehaviourSingleton<GameUI>
         OnGameStateChange(gameState);
     }
 
+    public void DisableAllScreens()
+    {
+        _mainMenu.gameObject.SetActive(false);
+        _gameScreen.gameObject.SetActive(false);
+        _loseScreen.gameObject.SetActive(false);
+    }
+
 
     private void OnGameStateChange(GameState gameState)
     {
