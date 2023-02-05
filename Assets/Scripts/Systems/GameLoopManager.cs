@@ -40,6 +40,17 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
     }
 
 
+    public void PlayerTakeDamage()
+    {
+        CurrentHP--;
+        GameUI.instance.UpdateHP(CurrentHP);
+
+        if (CurrentHP <= 0)
+        {
+            InvokeLoseGame();
+        }
+    }
+
     private void SwitchRootState()
     {
         Root root = HoveredRoot.GetComponent<Root>();

@@ -38,4 +38,11 @@ public class GameUI : MonoBehaviourSingleton<GameUI>
         }
     }
 
+
+    [SerializeField] private HPIndicator _hpIndicator;
+    public void UpdateHP(int amount)
+    {
+        _hpIndicator.UpdateHealth(amount);
+    }
+
 }
