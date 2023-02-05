@@ -9,6 +9,10 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
     public bool LoopIsActive { get; private set; }
 
 
+    public int CurrentHP { get; set; }
+    public int CurrentRootResource { get; set; }
+
+
     public float ClosestEnemyPositionY = -2.0f;
 
 
@@ -28,6 +32,9 @@ public class GameLoopManager : MonoBehaviourSingleton<GameLoopManager>
     {
         enabled = true;
         LoopIsActive = true;
+
+        CurrentHP = 3;
+        CurrentRootResource = 3;
 
         AudioManager.instance.PlayBGM("Strings");
         AudioManager.instance.PlayBGM("Drums");
